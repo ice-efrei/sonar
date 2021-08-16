@@ -15,7 +15,7 @@
 - servo motor
 ### support
 You can build the support with laser-cut mdf (like us) or with 3D printing.
-All files in the folder `support`.
+All files in the folder `files`.
 ### connections
 ![wiring](support/wiring/wiring.png)
 ![schematic wiring](support/wiring/schematic_wiring.png)
@@ -29,3 +29,7 @@ Of course those are just the default values in the script, edit them at will.
 The idea behind this project is to have a radar render of items detected by the ultrasonic sensor through a servo motor
 moving from 0 to 180 degrees.
 ## Code
+## Sources
+- Sonar Logo : sonar by Ian [Rahmadi Kurniawan](https://thenounproject.com/irk.aminin/) from the Noun Project
+- Servo motor control : [https://raspberry-pi.fr](https://raspberry-pi.fr/servomoteur-raspberry-pi)
+- HC-SR04 control : [https://raspberrypi-tutorials.fr](https://raspberrypi-tutorials.fr/utilisation-dun-capteur-de-distance-raspberry-pi-capteur-ultrasonique-hc-sr04/)
