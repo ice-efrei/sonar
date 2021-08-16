@@ -101,16 +101,16 @@ def async_ping(point_list, run):
 
 
 if __name__ == '__main__':
-    width, height = 500, 500
+    width, height = 1000, 500
     screen = pygame.display.set_mode([width, height])
 
     run = True
     # point define as an angle and a distance
     points = [
-        # {'y': 30, 'alpha': 60, 'opacity': 1.0},
-        {'y': 20, 'alpha': 160, 'opacity': 1.0},
-        # {'y': 10, 'alpha': 50, 'opacity': 1.0},
-        # {'y': 25, 'alpha': 20, 'opacity': 1.0}
+        {'y': 30, 'alpha': 60, 'opacity': 1.0},
+        {'y': 10, 'alpha': 160, 'opacity': 1.0},
+        {'y': 10, 'alpha': 50, 'opacity': 1.0},
+        {'y': 25, 'alpha': 75, 'opacity': 1.0}
     ]
 
     current_angle = 0
@@ -144,10 +144,10 @@ if __name__ == '__main__':
             for point in points:
                 y = int((point['y']/MAX_RANGE)*height)
                 x = int(
-                    y / math.tan(math.radians(point['alpha']))
+                    ((point['y']/MAX_RANGE)*(width/2)) / math.tan(math.radians(point['alpha']))
                 ) + int(width/2)
                 color = [int(255 * point['opacity'])] * 3
-                print("x : ", x, " - y : ", y)
+                # print("x : ", x, " - y : ", y)
                 draw_point(x, y, color, screen)
                 point['opacity'] = point['opacity']-0.2
                 if point['opacity'] < 0:
