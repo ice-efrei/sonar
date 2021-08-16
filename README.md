@@ -4,7 +4,7 @@
 ![owner](https://img.shields.io/badge/owner-ICE_EFREI-0A364A?style=for-the-badge)
 ![status](https://img.shields.io/badge/status-waiting_for_tests-32021F?style=for-the-badge)
 
-*| sonar from a HC-SR04 sensor (ultrasonic sensor) for raspberry |*
+*| sonar from a HC-SR04 sensor (ultrasonic sensor) with a raspberry |*
 
 ## materials
 ### electronics
