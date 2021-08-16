@@ -17,8 +17,8 @@
 You can build the support with laser-cut mdf (like us) or with 3D printing.
 All files in the folder `files`.
 ### connections
-![wiring](support/wiring/wiring.png)
-![schematic wiring](support/wiring/schematic_wiring.png)
+![wiring](files/wiring/wiring.png)
+![schematic wiring](files/wiring/schematic_wiring.png)
 Just note that :
 - servo `pulse` goes to GPIO25
 - HC-SR04 `trigger` goes to GPIO18
