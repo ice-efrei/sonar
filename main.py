@@ -39,8 +39,12 @@ def sonar_ping():
 
     while GPIO.input(GPIO_ECHO) == 0:
         StartTime = time.time()
-    while GPIO.input(GPIO_ECHO) == 1 and (TimeElapsed := StopTime - StartTime) < 0.5:
+
+    TimeElapsed = StopTime - StartTime
+
+    while GPIO.input(GPIO_ECHO) == 1 and TimeElapsed < 0.5:
         StopTime = time.time()
+        TimeElapsed = StopTime - StartTime
 
     # the scan stop after 1 sec
     if TimeElapsed > 0.5:
@@ -143,9 +147,12 @@ if __name__ == '__main__':
             # system to display all points and make those disappear
             for point in points:
                 y = int((point['y']/MAX_RANGE)*height)
-                x = int(
-                    ((point['y']/MAX_RANGE)*(width/2)) / math.tan(math.radians(point['alpha']))
-                ) + int(width/2)
+                try:
+                    x = int(
+                        ((point['y']/MAX_RANGE)*(width/2)) / math.tan(math.radians(point['alpha']))
+                    ) + int(width/2)
+                except ZeroDivisionError:
+                    x = 0
                 color = [int(255 * point['opacity'])] * 3
                 # print("x : ", x, " - y : ", y)
                 draw_point(x, y, color, screen)
