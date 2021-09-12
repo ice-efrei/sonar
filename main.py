@@ -110,12 +110,13 @@ if __name__ == '__main__':
 
     run = True
     # point define as an angle and a distance
-    points = [
-        {'y': 30, 'alpha': 60, 'opacity': 1.0},
-        {'y': 10, 'alpha': 160, 'opacity': 1.0},
-        {'y': 10, 'alpha': 50, 'opacity': 1.0},
-        {'y': 25, 'alpha': 75, 'opacity': 1.0}
-    ]
+    points = []
+    # points = [
+    #     {'y': 30, 'alpha': 60, 'opacity': 1.0},
+    #     {'y': 10, 'alpha': 160, 'opacity': 1.0},
+    #     {'y': 10, 'alpha': 50, 'opacity': 1.0},
+    #     {'y': 25, 'alpha': 75, 'opacity': 1.0}
+    # ]
 
     current_angle = 0
     direction = 1
@@ -134,6 +135,7 @@ if __name__ == '__main__':
     try:
         while run:
             dist = sonar_ping()
+            print(dist)
             if dist > 0:
                 points.append({
                     'y': copy.deepcopy(dist),
@@ -143,20 +145,30 @@ if __name__ == '__main__':
             time.sleep(0.5)
 
             current_angle, max_angle, direction = move(current_angle, max_angle, 5, direction, pwm)
+            # print(current_angle)
 
             # system to display all points and make those disappear
             for point in points:
-                y = int((point['y']/MAX_RANGE)*height)
+                # print(point)
+
+                try:
+                    y = int(
+                        (math.sin(math.radians(point['alpha']))*(point['y']/MAX_RANGE) * height)
+                    ) # + int(height)
+                except ZeroDivisionError:
+                    y = 0
+
                 try:
                     x = int(
-                        ((point['y']/MAX_RANGE)*(width/2)) / math.tan(math.radians(point['alpha']))
+                        (math.cos(math.radians(point['alpha']))*(point['y']/MAX_RANGE)*(width/2))
                     ) + int(width/2)
                 except ZeroDivisionError:
-                    x = 0
+                    x = int(width/2)
                 color = [int(255 * point['opacity'])] * 3
-                # print("x : ", x, " - y : ", y)
+                print(point)
+                print("x : ", x, " - y : ", y)
                 draw_point(x, y, color, screen)
-                point['opacity'] = point['opacity']-0.2
+                point['opacity'] = point['opacity']-0.05
                 if point['opacity'] < 0:
                     points.pop(points.index(point))
 
@@ -166,7 +178,7 @@ if __name__ == '__main__':
                     run = False
 
             # print("pygame loop")
-
+            # print("---")
             pygame.display.flip()
     except KeyboardInterrupt:  # ctrl + c
         print("Measurement stopped by User")
