@@ -122,7 +122,7 @@ if __name__ == '__main__':
     direction = 1
     max_angle = 180
 
-    pwm_gpio = 25
+    pwm_gpio = 19
     frequence = 50
     GPIO.setup(pwm_gpio, GPIO.OUT)
     pwm = GPIO.PWM(pwm_gpio, frequence)
@@ -144,7 +144,7 @@ if __name__ == '__main__':
                 })
             time.sleep(0.5)
 
-            current_angle, max_angle, direction = move(current_angle, max_angle, 5, direction, pwm)
+            current_angle, max_angle, direction = move(current_angle, max_angle, 10, direction, pwm)
             # print(current_angle)
 
             # system to display all points and make those disappear
