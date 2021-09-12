@@ -22,7 +22,7 @@ All files in the folder `files`.
 Just note that :
 - servo `pulse` goes to GPIO25
 - HC-SR04 `trigger` goes to GPIO18
-- HC-SR04 `echo` goes to GPIO24
+- HC-SR04 `echo` goes to GPIO24 through resistor (see scheme)
 
 Of course those are just the default values in the script, edit them at will.
 ## Concept

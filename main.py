@@ -85,8 +85,8 @@ def move(current_angle, max_angle, angle, direction, pwm):
 
 
 def draw_point(x, y, color, screen):
-    for i in range(x - 1, x + 1):
-        for j in range(y - 1, y + 1):
+    for i in range(x - 2, x + 2):
+        for j in range(y - 2, y + 2):
             screen.set_at((i, j), color)
 
 
@@ -165,8 +165,8 @@ if __name__ == '__main__':
                 except ZeroDivisionError:
                     x = int(width/2)
                 color = [int(255 * point['opacity'])] * 3
-                print(point)
-                print("x : ", x, " - y : ", y)
+                # print(point)
+                # print("x : ", x, " - y : ", y)
                 draw_point(x, y, color, screen)
                 point['opacity'] = point['opacity']-0.05
                 if point['opacity'] < 0:
