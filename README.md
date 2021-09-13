@@ -20,7 +20,7 @@ All files in the folder `files`.
 ![wiring](files/wiring/wiring.png)
 ![schematic wiring](files/wiring/schematic_wiring.png)
 Just note that :
-- servo `pulse` goes to GPIO25
+- servo `pulse` goes to GPIO19
 - HC-SR04 `trigger` goes to GPIO18
 - HC-SR04 `echo` goes to GPIO24 through resistor (see scheme)
 
